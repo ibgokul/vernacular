@@ -1,0 +1,24 @@
+#/bin/bash
+
+echo "Hardware Info"
+
+echo "OS VERSION : $(cat /etc/os-release | grep '^VERSION' /etc/os-release)"
+
+echo "Kernel Version: $(uname –r)"
+
+echo "Cores : $(cat /proc/cpuinfo | grep processor | wc -l)" 
+
+echo "Physical cores: $(cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l)"
+
+echo "CPU Clock Speed: $(lscpu | grep -i mhz)"
+
+echo "CPU architecture: $(lscpu | grep -i architecture)"
+
+echo "Network Bandwidth: $(iftop -n)"
+
+echo "Network Firewall: $(ufw status)"
+
+echo "Disk type: $(lsblk)"
+
+echo "RAM : $(dmidecode -t 17 | grep "Size.*MB" | awk '{s+=$2} END {print s / 1024}')G"
+

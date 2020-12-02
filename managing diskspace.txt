@@ -1,0 +1,8 @@
+#!/bin/bash
+
+path="/home/ubuntu/audios/"
+filename=*.wav
+logfile=/tmp/$(date +%d-%m-%Y).log
+mins=-120
+
+find "$path" -type f -name "*.wav" -mmin "$mins" -printf '%f\t%T+\t' -exec date '+%F+%H:%M:%S.%N' \ -delete >> $logfile

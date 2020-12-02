@@ -1,0 +1,13 @@
+FROM ubuntu:16.04
+
+RUN apt-get update -y
+
+# Install packages
+RUN apt-get install -y curl
+RUN apt-get install -y telnet
+RUN apt-get install -y ffmpeg
+
+# Remove apt cache to make the image smaller
+RUN rm -rf /var/lib/apt/lists/*
+
+CMD bash
